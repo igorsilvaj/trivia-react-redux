@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-// só para ter algo para adicionar
+import PropTypes from 'prop-types';
+import logo from '../trivia.png';
+
+// só para fazer o commit
+
 class Login extends Component {
   state = {
     name: '',
@@ -23,10 +27,19 @@ class Login extends Component {
     this.setState({ btnDisabled: emailValid && nameValid });
   };
 
+  handleSettingsBtn = () => {
+    const { history } = this.props;
+    history.push('/settings');
+  };
+
   render() {
     const { name, email, btnDisabled } = this.state;
     return (
-      <div>
+      <div className="App-header">
+        <header>
+          <img src={ logo } className="App-logo" alt="logo" />
+          <p>SUA VEZ</p>
+        </header>
         <label htmlFor="email">
           Email:
           <input
@@ -56,9 +69,20 @@ class Login extends Component {
         >
           Play
         </button>
+        <button
+          type="button"
+          data-testid="btn-settings"
+          onClick={ this.handleSettingsBtn }
+        >
+          Configurações
+        </button>
       </div>
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.func,
+}.isRequired;
 
 export default Login;
