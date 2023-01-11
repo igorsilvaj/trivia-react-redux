@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import logo from '../trivia.png';
 
-// só para fazer o commit
+// só para fazer o commit dnv
 
 class Login extends Component {
   state = {
