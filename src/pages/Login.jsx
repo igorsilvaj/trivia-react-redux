@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import logo from '../trivia.png';
-
-// só para fazer o commit dnv novamente mais uma vez
+import { requestTokenTrivia } from '../APIs/fetch';
+// import { requestToken } from '../redux/actions';
 
 class Login extends Component {
   state = {
     name: '',
     email: '',
     btnDisabled: false,
+    // isLoading: false, fazer um componente de loading para renderizar enquanto a API não responde.
   };
 
   handleChange = ({ target }) => {
@@ -25,6 +27,12 @@ class Login extends Component {
     const emailValid = re.test(email);
     const nameValid = name.length >= TREEH;
     this.setState({ btnDisabled: emailValid && nameValid });
+  };
+
+  handlePlayBtn = async () => {
+    const { history } = this.props;
+    await requestTokenTrivia();
+    history.push('/game');
   };
 
   handleSettingsBtn = () => {
@@ -66,6 +74,7 @@ class Login extends Component {
           type="button"
           disabled={ !btnDisabled }
           data-testid="btn-play"
+          onClick={ this.handlePlayBtn }
         >
           Play
         </button>
@@ -83,6 +92,7 @@ class Login extends Component {
 
 Login.propTypes = {
   history: PropTypes.func,
+  dispatch: PropTypes.func,
 }.isRequired;
 
-export default Login;
+export default connect()(Login);
