@@ -21,9 +21,9 @@ export const requestTriviaQuestions = async () => {
   return data;
 };
 
-export const userImg = (email) => `https://www.gravatar.com/avatar/${MD5(email).toString()}`;
-
 export const getQuestions = async () => {
   const data = await requestTriviaQuestions();
   return data;
 };
+
+export const userImg = (email) => `https://www.gravatar.com/avatar/${MD5(email).toString()}`;
