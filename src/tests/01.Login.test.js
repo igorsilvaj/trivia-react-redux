@@ -37,7 +37,7 @@ describe('Test Login component', () => {
     userEvent.type(name, 'Arthur');
     expect(btnPlay).toBeEnabled();
     userEvent.click(btnPlay);
-
+// fix
     await waitFor(() => expect(history.length).toBe(2))
     await act( async () => {
       expect(history.location.pathname).toBe('/game')
