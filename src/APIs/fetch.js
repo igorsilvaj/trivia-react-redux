@@ -5,20 +5,25 @@ export const requestTokenTrivia = async () => {
   const request = await fetch(URL);
   const response = await request.json();
   localStorage.setItem('token', response.token);
-  return response.token;
+  return response;
 };
 
 export const getToken = async () => {
   const data = await requestTokenTrivia();
-  return data;
+  return data.token;
 };
 
 export const requestTriviaQuestions = async () => {
-  const response = localStorage.getItem('token');
-  const URL = `https://opentdb.com/api.php?amount=5&token=${response}`;
+  const token = localStorage.getItem('token');
+  const URL = `https://opentdb.com/api.php?amount=5&token=${token}`;
   const request = await fetch(URL);
   const data = await request.json();
   return data;
 };
 
 export const userImg = (email) => `https://www.gravatar.com/avatar/${MD5(email).toString()}`;
+
+export const getQuestions = async () => {
+  const data = await requestTriviaQuestions();
+  return data;
+};
