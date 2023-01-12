@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import logo from '../trivia.png';
 import { requestTokenTrivia } from '../APIs/fetch';
-// import { requestToken } from '../redux/actions';
+import { login } from '../redux/actions';
+import { Loading } from '../components/Loading';
 
 class Login extends Component {
   state = {
     name: '',
     email: '',
     btnDisabled: false,
-    // isLoading: false, fazer um componente de loading para renderizar enquanto a API não responde.
+    isLoading: false,
   };
 
   handleChange = ({ target }) => {
@@ -30,8 +31,12 @@ class Login extends Component {
   };
 
   handlePlayBtn = async () => {
-    const { history } = this.props;
+    const { history, dispatch } = this.props;
+    const { name, email } = this.state;
     await requestTokenTrivia();
+    this.setState({ isLoading: true });
+    dispatch(login(name, email));
+    this.setState({ isLoading: false });
     history.push('/game');
   };
 
@@ -41,9 +46,10 @@ class Login extends Component {
   };
 
   render() {
-    const { name, email, btnDisabled } = this.state;
+    const { name, email, btnDisabled, isLoading } = this.state;
     return (
       <div className="App-header">
+        { isLoading && <Loading />}
         <header>
           <img src={ logo } className="App-logo" alt="logo" />
           <p>SUA VEZ</p>
