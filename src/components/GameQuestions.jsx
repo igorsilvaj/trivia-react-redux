@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { timerUpdate } from '../redux/actions';
 import { connect } from 'react-redux';
+import { timerUpdate, updateScore } from '../redux/actions';
 
 class GameQuestions extends Component {
   state = {
@@ -27,18 +27,37 @@ class GameQuestions extends Component {
   funcaoTesteDoTimer = () => {
     const { timer } = this.props;
     if (timer === 0) this.changeClass();
-    console.log(timer);
     if (timer === 0) {
       clearInterval(this.interval);
       this.setState({ isDisabled: true });
     }
   };
 
-  handleClick = () => {
+  handleClick = (event) => {
     clearInterval(this.interval);
-    // const { dispatch } = this.props;
-    // dispatch(timerUpdate());
+    const { target } = event;
+    const { name } = target;
+    const { dispatch, timer } = this.props;
+    if (name === 'correct') dispatch(updateScore(this.calcScore()));
+    dispatch(timerUpdate(timer));
     this.changeClass();
+  };
+
+  calcScore = () => {
+    const { timer, question } = this.props;
+    const ten = 10;
+    const hard = 3;
+    const medium = 2;
+    const easy = 1;
+    let questionDif = 0;
+    if (question.difficulty === 'hard') {
+      questionDif = hard;
+    } else if (question.difficulty === 'medium') {
+      questionDif = medium;
+    } else {
+      questionDif = easy;
+    }
+    return ten + (timer * questionDif);
   };
 
   changeClass() {
@@ -69,7 +88,7 @@ class GameQuestions extends Component {
                   : 'correct-answer'
               }
               key={ `${index}-question` }
-              onClick={ () => this.handleClick() }
+              onClick={ this.handleClick }
               className={
                 e.type === 'incorrect'
                   ? incorrect
@@ -90,9 +109,10 @@ const mapStateToProps = (state) => ({
 });
 
 GameQuestions.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   timer: PropTypes.number.isRequired,
   question: PropTypes.shape({
+    difficulty: PropTypes.string,
     category: PropTypes.string,
     question: PropTypes.string,
     type: PropTypes.string,

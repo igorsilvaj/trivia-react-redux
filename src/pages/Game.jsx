@@ -37,7 +37,7 @@ class Game extends Component {
   }
 
   render() {
-    const { name, gravatarEmail } = this.props;
+    const { name, gravatarEmail, score } = this.props;
     const {
       questions,
       currentQuestion,
@@ -61,12 +61,12 @@ class Game extends Component {
         <span data-testid="header-player-name">{name}</span>
         <p>
           Score:
-          <span data-testid="header-score">{' 0'}</span>
+          <span data-testid="header-score">{ score }</span>
         </p>
         {
           isLoading ? (<Loading />) : (
             <>
-              <Timer />
+              <Timer key={ `timer ${currentQuestion}` } />
               <GameQuestions
                 key={ currentQuestion }
                 question={ questions[currentQuestion] }
@@ -86,9 +86,11 @@ class Game extends Component {
 const mapStateToProps = (state) => ({
   name: state.loginReducer.name,
   gravatarEmail: state.loginReducer.gravatarEmail,
+  score: state.player.score,
 });
 
 Game.propTypes = {
+  score: PropTypes.number,
   name: PropTypes.string,
   gravatarEmail: PropTypes.string,
 }.isRequired;
