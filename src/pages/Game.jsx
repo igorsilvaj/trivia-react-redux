@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { userImg, getQuestions } from '../APIs/fetch';
 import { Loading } from '../components/Loading';
 import shuffle from '../helpers/shuffleArray';
+import gameAnswerPushHelper from '../helpers/gameAnswerPushHelper';
 
 class Game extends Component {
   state = {
@@ -28,6 +29,7 @@ class Game extends Component {
     const { questions, currentQuestion, isLoading } = this.state;
     // const classNameList = ['one', 'two', 'three', 'four'];
     let answerMap = [];
+    const lastNuber = 0;
     return (
       <div>
         <img
@@ -46,25 +48,20 @@ class Game extends Component {
             </p>
             <p data-testid="question-text">
               {questions[currentQuestion].question}
-              {
-                answerMap.push(
-                  ...questions[currentQuestion].incorrect_answers.map((e) => ({
-                    text: e,
-                    type: 'incorrect',
-                  })),
-                  {
-                    text: questions[currentQuestion].correct_answer,
-                    type: 'correct',
-                  },
-                )
-              }
             </p>
             <div data-testid="answer-options" className="answerContainer">
-
+              {gameAnswerPushHelper(
+                answerMap,
+                questions[currentQuestion].incorrect_answers,
+                questions[currentQuestion].correct_answer,
+              )}
               {shuffle(answerMap)}
               {answerMap.map((e, index) => {
                 const random = Math.floor(Math.random() * answerMap.length);
-                const answer = answerMap[random];
+                const randomTest = random === lastNuber
+                  ? Math.floor(Math.random() * answerMap.length)
+                  : random;
+                const answer = answerMap[randomTest];
                 answerMap = answerMap.filter((el) => el.text !== answer.text);
                 return (
                   <button
@@ -75,6 +72,7 @@ class Game extends Component {
                         : 'correct-answer'
                     }
                     key={ `${index}-question` }
+                    className={ e.type === 'incorrect' ? 'incorrect' : 'correct' }
                   >
                     {e.text}
                   </button>

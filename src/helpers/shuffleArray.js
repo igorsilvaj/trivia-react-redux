@@ -1,4 +1,4 @@
-const magicNumber = 0.5;
+const magicNumber = 0.6;
 
 const shuffle = (array) => {
   array.sort(() => Math.random() - magicNumber);
