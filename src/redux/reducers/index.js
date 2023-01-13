@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
-import loginReducer from './login';
+import loginReducer from './loginReducer';
 // import tokenReducer from './tokenReducer';
+import timerReducer from './timerReducer';
 import questionsReducer from './questionsReducer';
 
 const rootReducer = combineReducers({
   loginReducer,
-  // tokenReducer,
   questionsReducer,
+  timerReducer,
 });
 
 export default rootReducer;

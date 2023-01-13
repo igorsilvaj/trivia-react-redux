@@ -2,7 +2,7 @@ import { LOGIN_ACTION } from '../actions';
 
 const initialState = {
   name: '',
-  email: '',
+  gravatarEmail: '',
   img: '',
 };
 
@@ -12,7 +12,7 @@ const loginReducer = (state = initialState, action) => {
     return {
       ...state,
       name: action.name,
-      email: action.email,
+      gravatarEmail: action.email,
       img: action.img,
     };
   default: return state;
