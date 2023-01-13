@@ -11,6 +11,8 @@ class Game extends Component {
     questions: [],
     currentQuestion: 0,
     isLoading: true,
+    disabledColorWrong: '',
+    disabledColorCorrect: '',
   };
 
   async componentDidMount() {
@@ -24,10 +26,16 @@ class Game extends Component {
     }
   }
 
+  handleClick() {
+    // target.classList.add(target.name === 'incorrect' ? 'incorrect' : 'correct');
+    console.log('test');
+    this.setState({ disabledColorWrong: 'incorrect', disabledColorCorrect: 'correct' });
+  }
+
   render() {
     const { name, email } = this.props;
-    const { questions, currentQuestion, isLoading } = this.state;
-    // const classNameList = ['one', 'two', 'three', 'four'];
+    const { questions, currentQuestion, isLoading,
+      disabledColorWrong, disabledColorCorrect } = this.state;
     let answerMap = [];
     const lastNuber = 0;
     return (
@@ -66,13 +74,17 @@ class Game extends Component {
                 return (
                   <button
                     type="button"
+                    name={ e.type }
                     data-testid={
                       e.type === 'incorrect'
                         ? `wrong-answer-${index}`
                         : 'correct-answer'
                     }
                     key={ `${index}-question` }
-                    className={ e.type === 'incorrect' ? 'incorrect' : 'correct' }
+                    onClick={ () => this.handleClick() }
+                    className={ e.type === 'incorrect'
+                      ? disabledColorWrong
+                      : disabledColorCorrect }
                   >
                     {e.text}
                   </button>
