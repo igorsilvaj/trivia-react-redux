@@ -5,10 +5,15 @@ import { userImg } from '../APIs/fetch';
 
 class Feedback extends Component {
   feedbackResult = () => {
+    const { assertions } = this.props;
+    const three = 3;
+    const feedbackMsg = assertions >= three ? 'Well Done!' : 'Could be better...';
+    return feedbackMsg;
   };
 
   render() {
     const { name, gravatarEmail, score } = this.props;
+    const feedbackResult = this.feedbackResult();
     return (
       <>
         <div data-testid="feedback-text">Feedback</div>
@@ -30,7 +35,7 @@ class Feedback extends Component {
             { score }
           </span>
         </p>
-        <span data-testid="feedback-text">{ this.feedbackResult }</span>
+        <p data-testid="feedback-text">{ feedbackResult }</p>
       </>
     );
   }
