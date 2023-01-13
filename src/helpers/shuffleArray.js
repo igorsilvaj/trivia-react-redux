@@ -1,7 +1,9 @@
-const magicNumber = 0.6;
-
-const shuffle = (array) => {
-  array.sort(() => Math.random() - magicNumber);
+const shuffleArray = (array) => {
+  const shuffled = array
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+  return shuffled;
 };
 
-export default shuffle;
+export default shuffleArray;
