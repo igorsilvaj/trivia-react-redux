@@ -5,14 +5,13 @@ import { userImg, getQuestions } from '../APIs/fetch';
 import { Loading } from '../components/Loading';
 import GameQuestions from '../components/GameQuestions';
 import shuffleArray from '../helpers/shuffleArray';
+import Timer from '../components/Timer';
 
 class Game extends Component {
   state = {
     questions: [],
     currentQuestion: 0,
     isLoading: true,
-    disabledColorCorrect: '',
-    disabledColorIncorrect: '',
   };
 
   async componentDidMount() {
@@ -38,13 +37,11 @@ class Game extends Component {
   }
 
   render() {
-    const { name, email } = this.props;
+    const { name, gravatarEmail } = this.props;
     const {
       questions,
       currentQuestion,
       isLoading,
-      disabledColorIncorrect,
-      disabledColorCorrect,
     } = this.state;
     let rAnswer = [];
     if (!isLoading) {
@@ -57,7 +54,7 @@ class Game extends Component {
     return (
       <div>
         <img
-          src={ userImg(email) }
+          src={ userImg(gravatarEmail) }
           alt={ `Foto da pessoa usuária: ${name}` }
           data-testid="header-profile-picture"
         />
@@ -69,13 +66,11 @@ class Game extends Component {
         {
           isLoading ? (<Loading />) : (
             <>
+              <Timer />
               <GameQuestions
                 key={ currentQuestion }
                 question={ questions[currentQuestion] }
                 answers={ rAnswer }
-                handleQuestionClick={ () => this.handleQuestionClick() }
-                correct={ disabledColorCorrect }
-                incorrect={ disabledColorIncorrect }
               />
               <button type="button" onClick={ () => this.nextQuestion() }>
                 Próxima pergunta
@@ -90,12 +85,12 @@ class Game extends Component {
 
 const mapStateToProps = (state) => ({
   name: state.loginReducer.name,
-  email: state.loginReducer.email,
+  gravatarEmail: state.loginReducer.gravatarEmail,
 });
 
 Game.propTypes = {
   name: PropTypes.string,
-  email: PropTypes.string,
+  gravatarEmail: PropTypes.string,
 }.isRequired;
 
 export default connect(mapStateToProps)(Game);
