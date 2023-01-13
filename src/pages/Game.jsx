@@ -37,7 +37,7 @@ class Game extends Component {
   }
 
   render() {
-    const { name, gravatarEmail, score } = this.props;
+    const { name, gravatarEmail, score, nextBtn } = this.props;
     const {
       questions,
       currentQuestion,
@@ -72,9 +72,14 @@ class Game extends Component {
                 question={ questions[currentQuestion] }
                 answers={ rAnswer }
               />
-              <button type="button" onClick={ () => this.nextQuestion() }>
-                Próxima pergunta
-              </button>
+              {!nextBtn && (
+                <button
+                  data-testid="btn-next"
+                  type="button"
+                  onClick={ () => this.nextQuestion() }
+                >
+                  Próxima pergunta
+                </button>)}
             </>
           )
         }
@@ -87,9 +92,11 @@ const mapStateToProps = (state) => ({
   name: state.loginReducer.name,
   gravatarEmail: state.loginReducer.gravatarEmail,
   score: state.player.score,
+  nextBtn: state.nextButtonReducer.isDisable,
 });
 
 Game.propTypes = {
+  nextBtn: PropTypes.bool,
   score: PropTypes.number,
   name: PropTypes.string,
   gravatarEmail: PropTypes.string,
