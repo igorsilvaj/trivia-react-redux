@@ -6,6 +6,7 @@ export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS';
 export const TIMER_ACTION = 'TIMER_ACTION';
 export const UPDATING_TIMER = 'UPDATING_TIMER';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
+export const NEXT_BUTTON = 'NEXT_BUTTON';
 
 export const login = (name, email, img) => ({
   type: LOGIN_ACTION,
@@ -32,4 +33,9 @@ export const updatingTimer = (time) => ({
 export const updateScore = (score) => ({
   type: UPDATE_SCORE,
   score,
+});
+
+export const nextButton = (btn) => ({
+  type: NEXT_BUTTON,
+  payload: btn,
 });

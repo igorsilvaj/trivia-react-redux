@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { timerUpdate, updateScore } from '../redux/actions';
+import { timerUpdate, updateScore, nextButton } from '../redux/actions';
 
 class GameQuestions extends Component {
   state = {
@@ -11,11 +11,13 @@ class GameQuestions extends Component {
   };
 
   componentDidMount() {
+    const { dispatch } = this.props;
     console.log('Mount');
     const thousand = 1000;
     this.interval = setInterval(() => {
       this.funcaoTesteDoTimer();
     }, thousand);
+    dispatch(nextButton(true));
   }
 
   // componentDidUpdate() {
@@ -41,6 +43,7 @@ class GameQuestions extends Component {
     if (name === 'correct') dispatch(updateScore(this.calcScore()));
     dispatch(timerUpdate(timer));
     this.changeClass();
+    dispatch(nextButton(false));
   };
 
   calcScore = () => {
