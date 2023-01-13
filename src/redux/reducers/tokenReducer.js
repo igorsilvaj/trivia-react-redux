@@ -1,3 +1,5 @@
+// OBSOLETO
+
 import { REQUEST_TOKEN } from '../actions';
 
 const initialState = {

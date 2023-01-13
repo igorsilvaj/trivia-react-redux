@@ -1,0 +1,47 @@
+.questionContainer {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.answerContainer {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  height: 150px;
+  justify-content: space-around;
+  padding: 10px;
+  width: 200px;
+}
+
+.incorrect {
+  background-color: rgb(70, 9, 9);
+  border: 3px solid red;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+.correct {
+  background-color: rgb(6, 63, 8);
+  border: 3px solid rgb(6, 240, 15);
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+.one {
+  order: 0;
+}
+
+.two {
+  order: 1;
+}
+
+.three {
+  order: 2;
+}
+
+.four {
+  order: 3;
+}
