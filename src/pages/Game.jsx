@@ -27,8 +27,9 @@ class Game extends Component {
 
   nextQuestion() {
     const { currentQuestion, questions } = this.state;
+    const { history } = this.props;
     if (currentQuestion === questions.length - 1) {
-      console.log('last question');
+      history.push('/feedback');
     } else {
       this.setState({
         currentQuestion: currentQuestion + 1,
