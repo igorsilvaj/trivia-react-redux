@@ -12,7 +12,6 @@ class GameQuestions extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    console.log('Mount');
     const thousand = 1000;
     this.interval = setInterval(() => {
       this.funcaoTesteDoTimer();
@@ -22,7 +21,6 @@ class GameQuestions extends Component {
 
   // componentDidUpdate() {
   //   const { timer } = this.props;
-  //   console.log(timer);
   // if (timer === 0) this.changeClass();
   // }
 
@@ -35,9 +33,8 @@ class GameQuestions extends Component {
     }
   };
 
-  handleClick = (event) => {
+  handleClick = ({ target }) => {
     clearInterval(this.interval);
-    const { target } = event;
     const { name } = target;
     const { dispatch, timer } = this.props;
     if (name === 'correct') dispatch(updateScore(this.calcScore()));

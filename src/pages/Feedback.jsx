@@ -37,14 +37,14 @@ class Feedback extends Component {
         </p>
         <p data-testid="feedback-text">{ feedbackResult }</p>
         <p>
-          {'Você acertou '}
+          {'Um total de '}
           <span data-testid="feedback-total-score">{ score }</span>
-          {' questões!'}
+          {' pontos!'}
         </p>
         <p>
-          {'Um total de '}
+          {'Você acertou '}
           <span data-testid="feedback-total-question">{ assertions }</span>
-          {' pontos!'}
+          {' questões!'}
         </p>
         <button
           data-testid="btn-play-again"

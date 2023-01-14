@@ -15,7 +15,6 @@ const generateUniqueRandom = (maxNr) => {
     // Recursively generate number
     return generateUniqueRandom(maxNr);
   }
-  console.log('No more numbers available.');
   return false;
 };
 
