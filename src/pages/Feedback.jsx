@@ -12,7 +12,7 @@ class Feedback extends Component {
   };
 
   render() {
-    const { name, gravatarEmail, score, assertions } = this.props;
+    const { name, gravatarEmail, score, assertions, history } = this.props;
     const feedbackResult = this.feedbackResult();
     return (
       <>
@@ -37,15 +37,22 @@ class Feedback extends Component {
         </p>
         <p data-testid="feedback-text">{ feedbackResult }</p>
         <p>
-          Você acertou
+          {'Você acertou '}
           <span data-testid="feedback-total-score">{ score }</span>
-          questões!
+          {' questões!'}
         </p>
         <p>
-          Um total de:
+          {'Um total de '}
           <span data-testid="feedback-total-question">{ assertions }</span>
-          pontos!
+          {' pontos!'}
         </p>
+        <button
+          data-testid="btn-play-again"
+          type="button"
+          onClick={ () => history.push('/') }
+        >
+          Play Again
+        </button>
       </>
     );
   }
