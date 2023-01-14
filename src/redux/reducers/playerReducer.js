@@ -20,6 +20,8 @@ const player = (state = INITIAL_STATE, action) => {
       ...state,
       name: action.name,
       gravatarEmail: action.email,
+      assertions: 0,
+      score: 0,
     };
   default: return state;
   }

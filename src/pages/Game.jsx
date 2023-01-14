@@ -27,8 +27,22 @@ class Game extends Component {
 
   nextQuestion() {
     const { currentQuestion, questions } = this.state;
-    const { history } = this.props;
+    const { history, name, score, gravatarEmail } = this.props;
     if (currentQuestion === questions.length - 1) {
+      const ranking = JSON.parse(localStorage.getItem('ranking'));
+      if (!ranking) {
+        localStorage.setItem('ranking', JSON.stringify([{
+          name,
+          score,
+          picture: userImg(gravatarEmail),
+        }]));
+      } else {
+        localStorage.setItem('ranking', JSON.stringify([...ranking, {
+          name,
+          score,
+          picture: userImg(gravatarEmail),
+        }]));
+      }
       history.push('/feedback');
     } else {
       this.setState({
@@ -39,17 +53,17 @@ class Game extends Component {
 
   render() {
     const { name, gravatarEmail, score, nextBtn } = this.props;
-    const {
-      questions,
-      currentQuestion,
-      isLoading,
-    } = this.state;
+    const { questions, currentQuestion, isLoading } = this.state;
     let rAnswer = [];
     if (!isLoading) {
       const correctA = {
-        text: questions[currentQuestion].correct_answer, type: 'correct' };
-      const wrongA = questions[currentQuestion].incorrect_answers.map((e) => (
-        { text: e, type: 'incorrect' }));
+        text: questions[currentQuestion].correct_answer,
+        type: 'correct',
+      };
+      const wrongA = questions[currentQuestion].incorrect_answers.map((e) => ({
+        text: e,
+        type: 'incorrect',
+      }));
       rAnswer = shuffleArray([correctA, ...wrongA]);
     }
     return (
@@ -62,28 +76,29 @@ class Game extends Component {
         <span data-testid="header-player-name">{name}</span>
         <p>
           Score:
-          <span data-testid="header-score">{ score }</span>
+          <span data-testid="header-score">{score}</span>
         </p>
-        {
-          isLoading ? (<Loading />) : (
-            <>
-              <Timer key={ `timer ${currentQuestion}` } />
-              <GameQuestions
-                key={ currentQuestion }
-                question={ questions[currentQuestion] }
-                answers={ rAnswer }
-              />
-              {!nextBtn && (
-                <button
-                  data-testid="btn-next"
-                  type="button"
-                  onClick={ () => this.nextQuestion() }
-                >
-                  Próxima pergunta
-                </button>)}
-            </>
-          )
-        }
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <Timer key={ `timer ${currentQuestion}` } />
+            <GameQuestions
+              key={ currentQuestion }
+              question={ questions[currentQuestion] }
+              answers={ rAnswer }
+            />
+            {!nextBtn && (
+              <button
+                data-testid="btn-next"
+                type="button"
+                onClick={ () => this.nextQuestion() }
+              >
+                Próxima pergunta
+              </button>
+            )}
+          </>
+        )}
       </div>
     );
   }
