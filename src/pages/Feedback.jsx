@@ -12,7 +12,7 @@ class Feedback extends Component {
   };
 
   render() {
-    const { name, gravatarEmail, score } = this.props;
+    const { name, gravatarEmail, score, assertions } = this.props;
     const feedbackResult = this.feedbackResult();
     return (
       <>
@@ -36,6 +36,16 @@ class Feedback extends Component {
           </span>
         </p>
         <p data-testid="feedback-text">{ feedbackResult }</p>
+        <p>
+          Você acertou
+          <span data-testid="feedback-total-score">{ score }</span>
+          questões!
+        </p>
+        <p>
+          Um total de:
+          <span data-testid="feedback-total-question">{ assertions }</span>
+          pontos!
+        </p>
       </>
     );
   }
