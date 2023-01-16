@@ -105,8 +105,8 @@ class Game extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  name: state.loginReducer.name,
-  gravatarEmail: state.loginReducer.gravatarEmail,
+  name: state.player.name,
+  gravatarEmail: state.player.gravatarEmail,
   score: state.player.score,
   nextBtn: state.nextButtonReducer.isDisable,
 });
