@@ -65,13 +65,14 @@ class Feedback extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  name: state.loginReducer.name,
-  gravatarEmail: state.loginReducer.gravatarEmail,
+  name: state.player.name,
+  gravatarEmail: state.player.gravatarEmail,
   score: state.player.score,
   assertions: state.player.assertions,
 });
 
 Feedback.propTypes = {
+  history: PropTypes.func,
   assertions: PropTypes.number,
   score: PropTypes.number,
   name: PropTypes.string,

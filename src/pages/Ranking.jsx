@@ -5,8 +5,7 @@ export default class Ranking extends Component {
   render() {
     const { history } = this.props;
     const ranking = JSON.parse(localStorage.getItem('ranking'));
-    const sortRanking = ranking.sort((a, b) => b.score - a.score);
-
+    const sortRanking = !ranking ? [] : ranking.sort((a, b) => b.score - a.score);
     return (
       <>
         <div data-testid="ranking-title">Ranking</div>
