@@ -25,11 +25,12 @@ class GameQuestions extends Component {
   // }
 
   funcaoTesteDoTimer = () => {
-    const { timer } = this.props;
+    const { timer, dispatch } = this.props;
     if (timer === 0) this.changeClass();
     if (timer === 0) {
       clearInterval(this.interval);
       this.setState({ isDisabled: true });
+      dispatch(nextButton(false));
     }
   };
 
