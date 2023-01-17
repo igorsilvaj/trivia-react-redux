@@ -6,9 +6,9 @@ import App from "../App";
 import { act } from "react-dom/test-utils";
 import { test } from "./mocks/reduxState";
 
-describe('', () => {
-  it('', () => {
-    renderWithRouterAndRedux(<Login />);
-
+describe('Testes da página de game', () => {
+  it('Deve renderizar o componente game na rota "/game"', () => {
+    const { history } = renderWithRouterAndRedux(<App />, test, '/game');
+    expect(history.location.pathname).toBe('/game')
   })
 })

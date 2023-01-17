@@ -6,8 +6,6 @@ import App from "../App";
 import { act } from "react-dom/test-utils";
 import { test } from "./mocks/reduxState";
 
-const token = '38266f6dd1a9deb4e0a9b3357fc1a93f55dde432ae3c290c26624bb101a7bdb5';
-
 describe('Testa o componente de login', () => {
   it('deve ser possível escrever o nome de usuário no campo correto', () => {
     renderWithRouterAndRedux(<Login />);
