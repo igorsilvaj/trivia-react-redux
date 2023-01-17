@@ -8,21 +8,11 @@ export const requestTokenTrivia = async () => {
   return response;
 };
 
-export const getToken = async () => {
-  const data = await requestTokenTrivia();
-  return data.token;
-};
-
 export const requestTriviaQuestions = async () => {
   const token = localStorage.getItem('token');
   const URL = `https://opentdb.com/api.php?amount=5&token=${token}`;
   const request = await fetch(URL);
   const data = await request.json();
-  return data;
-};
-
-export const getQuestions = async () => {
-  const data = await requestTriviaQuestions();
   return data;
 };
 

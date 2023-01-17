@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import logo from '../trivia.png';
-import { requestTokenTrivia } from '../APIs/fetch';
-import { login } from '../redux/actions';
+import { requestTokenTrivia } from '../helpers/fetch';
+import { login, requestQuestions } from '../redux/actions';
 import { Loading } from '../components/Loading';
 
 class Login extends Component {
@@ -33,11 +33,15 @@ class Login extends Component {
   handlePlayBtn = async () => {
     const { history, dispatch } = this.props;
     const { name, email } = this.state;
+    const requestTimeout = 1000;
     await requestTokenTrivia();
     this.setState({ isLoading: true });
     dispatch(login(name, email));
-    this.setState({ isLoading: false });
-    history.push('/game');
+    dispatch(requestQuestions());
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+      history.push('/game');
+    }, requestTimeout);
   };
 
   handleSettingsBtn = () => {

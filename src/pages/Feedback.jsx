@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { userImg } from '../APIs/fetch';
+import { userImg } from '../helpers/fetch';
 
 class Feedback extends Component {
   feedbackResult = () => {
@@ -44,7 +44,7 @@ class Feedback extends Component {
         <p>
           {'Você acertou '}
           <span data-testid="feedback-total-question">{ assertions }</span>
-          {' questões!'}
+          {assertions > 1 ? ' questões!' : ' questão!'}
         </p>
         <button
           data-testid="btn-play-again"

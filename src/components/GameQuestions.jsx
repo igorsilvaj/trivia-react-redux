@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { timerUpdate, updateScore, nextButton } from '../redux/actions';
+import { actionTimer, updateScore, nextButton, resetTimer } from '../redux/actions';
 
 class GameQuestions extends Component {
   state = {
@@ -11,25 +11,19 @@ class GameQuestions extends Component {
   };
 
   componentDidMount() {
-    const { dispatch } = this.props;
     const thousand = 1000;
     this.interval = setInterval(() => {
-      this.funcaoTesteDoTimer();
+      this.handleTimer();
     }, thousand);
-    dispatch(nextButton(true));
   }
 
-  // componentDidUpdate() {
-  //   const { timer } = this.props;
-  // if (timer === 0) this.changeClass();
-  // }
-
-  funcaoTesteDoTimer = () => {
+  handleTimer = () => {
     const { timer, dispatch } = this.props;
-    if (timer === 0) this.changeClass();
     if (timer === 0) {
       clearInterval(this.interval);
+      this.changeClass();
       this.setState({ isDisabled: true });
+      dispatch(resetTimer());
       dispatch(nextButton(false));
     }
   };
@@ -39,21 +33,21 @@ class GameQuestions extends Component {
     const { name } = target;
     const { dispatch, timer } = this.props;
     if (name === 'correct') dispatch(updateScore(this.calcScore()));
-    dispatch(timerUpdate(timer));
+    dispatch(actionTimer(timer));
     this.changeClass();
     dispatch(nextButton(false));
   };
 
   calcScore = () => {
-    const { timer, question } = this.props;
+    const { timer, questions, currentQuestion } = this.props;
     const ten = 10;
     const hard = 3;
     const medium = 2;
     const easy = 1;
     let questionDif = 0;
-    if (question.difficulty === 'hard') {
+    if (questions[currentQuestion].difficulty === 'hard') {
       questionDif = hard;
-    } else if (question.difficulty === 'medium') {
+    } else if (questions[currentQuestion].difficulty === 'medium') {
       questionDif = medium;
     } else {
       questionDif = easy;
@@ -66,19 +60,16 @@ class GameQuestions extends Component {
   }
 
   render() {
-    const {
-      question,
-      answers,
-    } = this.props;
+    const { questions, currentQuestion, answers } = this.props;
     const { correct, incorrect, isDisabled } = this.state;
     return (
       <div className="questionContainer">
         <p data-testid="question-category">
-          {question.category}
+          {questions[currentQuestion].category}
         </p>
-        <p data-testid="question-text">{question.question}</p>
+        <p data-testid="question-text">{questions[currentQuestion].question}</p>
         <div data-testid="answer-options" className="answerContainer">
-          {answers.map((e, index) => (
+          {answers[currentQuestion].map((e, index) => (
             <button
               type="button"
               name={ e.type }
@@ -107,20 +98,17 @@ class GameQuestions extends Component {
 
 const mapStateToProps = (state) => ({
   timer: state.timerReducer.timer,
+  currentQuestion: state.questionsReducer.currentQuestion,
+  questions: state.questionsReducer.questions.results,
+  answers: state.questionsReducer.answers,
 });
 
 GameQuestions.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  timer: PropTypes.number.isRequired,
-  question: PropTypes.shape({
-    difficulty: PropTypes.string,
-    category: PropTypes.string,
-    question: PropTypes.string,
-    type: PropTypes.string,
-    correct_answer: PropTypes.string,
-    incorrect_answers: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-  answers: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-};
+  dispatch: PropTypes.func,
+  timer: PropTypes.number,
+  questions: PropTypes.shape({}),
+  currentQuestion: PropTypes.number,
+  answers: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape())),
+}.isRequired;
 
 export default connect(mapStateToProps)(GameQuestions);

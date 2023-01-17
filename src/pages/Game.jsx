@@ -1,33 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { userImg, getQuestions } from '../APIs/fetch';
+import { userImg } from '../helpers/fetch';
 import { Loading } from '../components/Loading';
-import GameQuestions from '../components/GameQuestions';
-import shuffleArray from '../helpers/shuffleArray';
 import Timer from '../components/Timer';
+import GameQuestions from '../components/GameQuestions';
+import { nextQuestion } from '../redux/actions';
 
 class Game extends Component {
-  state = {
-    questions: [],
-    currentQuestion: 0,
-    isLoading: true,
-  };
-
-  async componentDidMount() {
-    const { history } = this.props;
-    const request = await getQuestions();
-    if (request.response_code !== 0) {
+  componentDidMount() {
+    const { history, responseCode } = this.props;
+    if (responseCode !== 0) {
       localStorage.removeItem('token');
       history.push('/');
-    } else {
-      this.setState({ questions: request.results, isLoading: false });
     }
   }
 
   nextQuestion() {
-    const { currentQuestion, questions } = this.state;
-    const { history, name, score, gravatarEmail } = this.props;
+    const { history, name, score, gravatarEmail, dispatch,
+      currentQuestion, questions } = this.props;
     if (currentQuestion === questions.length - 1) {
       const ranking = JSON.parse(localStorage.getItem('ranking'));
       if (!ranking) {
@@ -45,60 +36,48 @@ class Game extends Component {
       }
       history.push('/feedback');
     } else {
-      this.setState({
-        currentQuestion: currentQuestion + 1,
-      });
+      dispatch(nextQuestion());
     }
   }
 
   render() {
-    const { name, gravatarEmail, score, nextBtn } = this.props;
-    const { questions, currentQuestion, isLoading } = this.state;
-    let rAnswer = [];
-    if (!isLoading) {
-      const correctA = {
-        text: questions[currentQuestion].correct_answer,
-        type: 'correct',
-      };
-      const wrongA = questions[currentQuestion].incorrect_answers.map((e) => ({
-        text: e,
-        type: 'incorrect',
-      }));
-      rAnswer = shuffleArray([correctA, ...wrongA]);
-    }
+    const { name, gravatarEmail, score, isFetching, nextBtn,
+      currentQuestion } = this.props;
     return (
-      <div>
-        <img
-          src={ userImg(gravatarEmail) }
-          alt={ `Foto da pessoa usuária: ${name}` }
-          data-testid="header-profile-picture"
-        />
-        <span data-testid="header-player-name">{name}</span>
-        <p>
-          Score:
-          <span data-testid="header-score">{score}</span>
-        </p>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <>
-            <Timer key={ `timer ${currentQuestion}` } />
-            <GameQuestions
-              key={ currentQuestion }
-              question={ questions[currentQuestion] }
-              answers={ rAnswer }
-            />
-            {!nextBtn && (
-              <button
-                data-testid="btn-next"
-                type="button"
-                onClick={ () => this.nextQuestion() }
-              >
-                Próxima pergunta
-              </button>
-            )}
-          </>
-        )}
+      <div className="gameContainer">
+        <div className="gameHeader">
+          <img
+            src={ userImg(gravatarEmail) }
+            alt={ `Foto da pessoa usuária: ${name}` }
+            data-testid="header-profile-picture"
+          />
+          <span data-testid="header-player-name">{name}</span>
+          <p>
+            {'Pontuação: '}
+            <span data-testid="header-score">{score}</span>
+          </p>
+        </div>
+        <div className="gameBody">
+          {
+            isFetching
+              ? <Loading />
+              : (
+                <>
+                  <Timer key={ `CurrentTimer-${currentQuestion}` } />
+                  <GameQuestions key={ `CurrentQuestion-${currentQuestion}` } />
+                </>
+              )
+          }
+          {!nextBtn && (
+            <button
+              data-testid="btn-next"
+              type="button"
+              onClick={ () => this.nextQuestion() }
+            >
+              Próxima pergunta
+            </button>
+          )}
+        </div>
       </div>
     );
   }
@@ -108,7 +87,11 @@ const mapStateToProps = (state) => ({
   name: state.player.name,
   gravatarEmail: state.player.gravatarEmail,
   score: state.player.score,
-  nextBtn: state.nextButtonReducer.isDisable,
+  isFetching: state.questionsReducer.isFetching,
+  responseCode: state.questionsReducer.questions.response_code,
+  currentQuestion: state.questionsReducer.currentQuestion,
+  questions: state.questionsReducer.questions.results,
+  nextBtn: state.questionsReducer.isBtnDisabled,
 });
 
 Game.propTypes = {

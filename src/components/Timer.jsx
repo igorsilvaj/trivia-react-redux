@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updatingTimer, timerUpdate } from '../redux/actions';
+import { updatingTimer, actionTimer } from '../redux/actions';
 
 class Timer extends Component {
   state = {
@@ -11,7 +11,7 @@ class Timer extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     const thirty = 30;
-    dispatch(timerUpdate(thirty));
+    dispatch(actionTimer(thirty));
     const thousand = 1000;
     this.interval = setInterval(() => {
       const { timerStopped } = this.props;
@@ -31,7 +31,7 @@ class Timer extends Component {
   matchTime = () => {
     const { dispatch } = this.props;
     const { time } = this.state;
-    dispatch(timerUpdate(time - 1));
+    dispatch(actionTimer(time - 1));
     dispatch(updatingTimer(time));
   };
 
@@ -45,7 +45,12 @@ class Timer extends Component {
   render() {
     const { time } = this.state;
     return (
-      <div>{ time }</div>
+      <div>
+        <span>
+          {'Tempo Restante: '}
+          { time }
+        </span>
+      </div>
     );
   }
 }
