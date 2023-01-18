@@ -1,9 +1,6 @@
 import renderWithRouterAndRedux from "./helpers/renderWithRouterAndRedux";
-import Login from "../pages/Login";
-import userEvent from "@testing-library/user-event";
-import { screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import App from "../App";
-import { act } from "react-dom/test-utils";
 import { test, test2 } from "./mocks/reduxState";
 
 describe('Testes do componente timer', () => {
@@ -19,14 +16,5 @@ describe('Testes do componente timer', () => {
     renderWithRouterAndRedux(<App />, test2, '/game');
     const timer = await screen.findByText(/tempo restante: 30/i)
     expect(timer).toBeInTheDocument();
-    screen.debug()
   })
-  // it('Deve parar em 0', async () => {
-  //   renderWithRouterAndRedux(<App />, test, '/game');
-  //   act(() => {
-  //     jest.advanceTimersByTime(32000);
-  //   })
-  //   const timer = await screen.findByText(/tempo restante: 0/i)
-  //   expect(timer).toBeVisible();
-  // })
 })

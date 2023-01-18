@@ -31,19 +31,3 @@
   cursor: pointer;
   pointer-events: none;
 }
-
-.one {
-  order: 0;
-}
-
-.two {
-  order: 1;
-}
-
-.three {
-  order: 2;
-}
-
-.four {
-  order: 3;
-}

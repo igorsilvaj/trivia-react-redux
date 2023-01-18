@@ -1,7 +1,6 @@
 import renderWithRouterAndRedux from "./helpers/renderWithRouterAndRedux";
-import { screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import App from "../App";
-import { act } from "react-dom/test-utils";
 import Feedback from "../pages/Feedback";
 import {playerStateC, playerStateE} from "./mocks/reduxState";
 import userEvent from "@testing-library/user-event";

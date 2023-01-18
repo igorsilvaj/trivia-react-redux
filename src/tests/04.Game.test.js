@@ -1,9 +1,7 @@
 import renderWithRouterAndRedux from "./helpers/renderWithRouterAndRedux";
-import Login from "../pages/Login";
 import userEvent from "@testing-library/user-event";
-import { screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import App from "../App";
-import { act } from "react-dom/test-utils";
 import { test, test2, test3 } from "./mocks/reduxState";
 import { correctRanking } from "./mocks/localStorage";
 
@@ -16,11 +14,6 @@ describe('Testes da página de game', () => {
     const { history } = renderWithRouterAndRedux(<App />, {}, '/game');
     expect(history.location.pathname).toBe('/')
   })
-  // it('Deve renderizar um timer iniciando em "30" segundos', () => {
-  //   renderWithRouterAndRedux(<App />, test2, '/game');
-  //   const timer = screen.getByText(/tempo restante: 30/i)
-  //   expect(timer).toBeVisible();
-  // })
   it('Deve renderizar a pontuação do usuario iniciando em "0"', () => {
     renderWithRouterAndRedux(<App />, test2, '/game');
     const score = screen.getByTestId('header-score');

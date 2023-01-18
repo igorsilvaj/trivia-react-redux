@@ -30,7 +30,6 @@ function GameQuestions(props) {
       medium: 2,
       easy: 1,
     };
-    // console.log('score:', ten + (time * dif[currDif]));
     return ten + (timer * dif[currDif]);
   };
 
@@ -38,7 +37,6 @@ function GameQuestions(props) {
     const { name } = target;
     if (name === 'correct') dispatch(updateScore(calcScore()));
     dispatch(stopTimer(timer));
-    // console.log('stop');
     changeClass();
     dispatch(nextButton(false));
   };
