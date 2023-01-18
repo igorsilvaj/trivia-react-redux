@@ -2,8 +2,8 @@ import { requestTriviaQuestions } from '../../helpers/fetch';
 
 export const LOGIN_ACTION = 'LOGIN_ACTION';
 
-export const ACTION_TIMER = 'ACTION_TIMER';
-export const UPDATING_TIMER = 'UPDATING_TIMER';
+export const UPDATE_TIMER = 'UPDATE_TIMER';
+export const STOP_TIMER = 'STOP_TIMER';
 export const RESET_TIMER = 'RESET_TIMER';
 
 export const START_REQUEST = 'START_REQUEST';
@@ -16,8 +16,8 @@ export const NEXT_BUTTON = 'NEXT_BUTTON';
 export const NEXT_QUESTION = 'NEXT_QUESTION';
 
 export const login = (name, email, img) => ({ type: LOGIN_ACTION, name, email, img });
-export const actionTimer = (time) => ({ type: ACTION_TIMER, time });
-export const updatingTimer = (time) => ({ type: UPDATING_TIMER, time });
+export const updateTimer = (time) => ({ type: UPDATE_TIMER, time });
+export const stopTimer = (time) => ({ type: STOP_TIMER, time });
 export const resetTimer = () => ({ type: RESET_TIMER });
 export const updateScore = (score) => ({ type: UPDATE_SCORE, score });
 export const nextButton = (btn) => ({ type: NEXT_BUTTON, payload: btn });

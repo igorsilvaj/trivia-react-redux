@@ -5,7 +5,7 @@ import { userImg } from '../helpers/fetch';
 import { Loading } from '../components/Loading';
 import Timer from '../components/Timer';
 import GameQuestions from '../components/GameQuestions';
-import { nextQuestion } from '../redux/actions';
+import { nextQuestion, resetTimer } from '../redux/actions';
 
 class Game extends Component {
   componentDidMount() {
@@ -36,6 +36,7 @@ class Game extends Component {
       }
       history.push('/feedback');
     } else {
+      dispatch(resetTimer());
       dispatch(nextQuestion());
     }
   }
@@ -64,7 +65,10 @@ class Game extends Component {
               : (
                 <>
                   <Timer key={ `CurrentTimer-${currentQuestion}` } />
-                  <GameQuestions key={ `CurrentQuestion-${currentQuestion}` } />
+                  <GameQuestions
+                    key={ `CurrentQuestion-${currentQuestion}` }
+                    handleClick={ this.handleClick }
+                  />
                 </>
               )
           }

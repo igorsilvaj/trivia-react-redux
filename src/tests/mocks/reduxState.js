@@ -24,7 +24,7 @@ export const test = {
         {
           category: 'Entertainment: Music',
           type: 'multiple',
-          difficulty: 'medium',
+          difficulty: 'easy',
           question: 'Who had hits in the 70s with the songs &quot;Lonely Boy&quot; and &quot;Never Let Her Slip Away&quot;?',
           correct_answer: 'Andrew Gold',
           incorrect_answers: [
@@ -60,7 +60,7 @@ export const test = {
         {
           category: 'Entertainment: Film',
           type: 'boolean',
-          difficulty: 'hard',
+          difficulty: 'easy',
           question: 'The weapon Clint Eastwood uses in &quot;Dirty Harry&quot; was a .44 Automag.',
           correct_answer: 'False',
           incorrect_answers: [
@@ -81,7 +81,7 @@ export const test = {
         }
       ]
     },
-    currentQuestion: 3,
+    currentQuestion: 0,
     answers: [
       [
         {
@@ -171,7 +171,7 @@ export const test = {
   },
   timerReducer: {
     timerStopped: 30,
-    timer: 29
+    timer: 30
   },
   player: {
     name: 'fasdfas',
@@ -201,7 +201,7 @@ export const test2 = {
         {
           category: 'Entertainment: Film',
           type: 'multiple',
-          difficulty: 'easy',
+          difficulty: 'medium',
           question: 'What was the first monster to appear alongside Godzilla?',
           correct_answer: 'Anguirus',
           incorrect_answers: [
@@ -213,7 +213,7 @@ export const test2 = {
         {
           category: 'Geography',
           type: 'multiple',
-          difficulty: 'medium',
+          difficulty: 'hard',
           question: 'The land mass of modern day Turkey is called what?',
           correct_answer: 'Anatolia',
           incorrect_answers: [
@@ -336,7 +336,7 @@ export const test2 = {
   },
   timerReducer: {
     timerStopped: 30,
-    timer: 29
+    timer: 30
   },
   player: {
     name: 'fasdfas',
@@ -354,7 +354,7 @@ export const test3 = {
         {
           category: 'Entertainment: Music',
           type: 'multiple',
-          difficulty: 'medium',
+          difficulty: 'easy',
           question: 'Who had hits in the 70s with the songs &quot;Lonely Boy&quot; and &quot;Never Let Her Slip Away&quot;?',
           correct_answer: 'Andrew Gold',
           incorrect_answers: [
@@ -400,7 +400,7 @@ export const test3 = {
         {
           category: 'Entertainment: Video Games',
           type: 'multiple',
-          difficulty: 'easy',
+          difficulty: 'hard',
           question: 'In the video game &quot;Postal 2&quot;, what is the name of Postal Dude&#039;s dog?',
           correct_answer: 'Champ',
           incorrect_answers: [
@@ -501,7 +501,7 @@ export const test3 = {
   },
   timerReducer: {
     timerStopped: 30,
-    timer: 29
+    timer: 30
   },
   player: {
     name: 'fasdfas',

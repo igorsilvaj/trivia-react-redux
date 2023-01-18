@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import logo from '../trivia.png';
 import { requestTokenTrivia } from '../helpers/fetch';
-import { login, requestQuestions } from '../redux/actions';
+import { login, requestQuestions, resetTimer } from '../redux/actions';
 import { Loading } from '../components/Loading';
 
 class Login extends Component {
@@ -38,6 +38,7 @@ class Login extends Component {
     this.setState({ isLoading: true });
     dispatch(login(name, email));
     dispatch(requestQuestions());
+    dispatch(resetTimer());
     setTimeout(() => {
       this.setState({ isLoading: false });
       history.push('/game');

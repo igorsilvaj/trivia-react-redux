@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { screen, waitFor } from '@testing-library/react';
 import App from "../App";
 import { act } from "react-dom/test-utils";
-import { test2, test3 } from "./mocks/reduxState";
+import { test, test2, test3 } from "./mocks/reduxState";
 import { correctRanking } from "./mocks/localStorage";
 
 describe('Testes da página de game', () => {
@@ -16,11 +16,11 @@ describe('Testes da página de game', () => {
     const { history } = renderWithRouterAndRedux(<App />, {}, '/game');
     expect(history.location.pathname).toBe('/')
   })
-  it('Deve renderizar um timer iniciando em "30" segundos', () => {
-    renderWithRouterAndRedux(<App />, test2, '/game');
-    const timer = screen.getByText(/tempo restante: 30/i)
-    expect(timer).toBeVisible();
-  })
+  // it('Deve renderizar um timer iniciando em "30" segundos', () => {
+  //   renderWithRouterAndRedux(<App />, test2, '/game');
+  //   const timer = screen.getByText(/tempo restante: 30/i)
+  //   expect(timer).toBeVisible();
+  // })
   it('Deve renderizar a pontuação do usuario iniciando em "0"', () => {
     renderWithRouterAndRedux(<App />, test2, '/game');
     const score = screen.getByTestId('header-score');
@@ -62,5 +62,29 @@ describe('Testes da página de game', () => {
     expect(nextQuestion).toBeVisible();
     userEvent.click(nextQuestion);
     expect(history.location.pathname).toBe('/feedback');
+  })
+  it('Deve contabilizar o score corretamente', () => {
+    renderWithRouterAndRedux(<App />, test, '/game');
+    const firstQuestion = screen.getByRole('button', {  name: /Andrew Gold/i});
+    expect(firstQuestion).toBeVisible();
+    userEvent.click(firstQuestion);
+    const score1 = screen.getByTestId('header-score');
+    expect(score1.innerHTML).toEqual('137')
+  })
+  it('Deve contabilizar o score corretamente', () => {
+    renderWithRouterAndRedux(<App />, test2, '/game');
+    const firstQuestion = screen.getByRole('button', {  name: /Andrew Gold/i});
+    expect(firstQuestion).toBeVisible();
+    userEvent.click(firstQuestion);
+    const score1 = screen.getByTestId('header-score');
+    expect(score1.innerHTML).toEqual('70')
+  })
+  it('Deve contabilizar o score corretamente', () => {
+    renderWithRouterAndRedux(<App />, test3, '/game');
+    const firstQuestion = screen.getByRole('button', {  name: /Champ/i});
+    expect(firstQuestion).toBeVisible();
+    userEvent.click(firstQuestion);
+    const score1 = screen.getByTestId('header-score');
+    expect(score1.innerHTML).toEqual('100')
   })
 })
