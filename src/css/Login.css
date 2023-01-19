@@ -1,0 +1,94 @@
+.loginContainer {
+  align-items: center;
+  background-image: url('../assets/imgs/loginBg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 15vmin;
+  margin-bottom: 30px;
+  pointer-events: none;
+}
+
+.loginForm {
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-flow: column wrap;
+  height: 266px;
+  justify-content: center;
+  left: 333px;
+  top: 316px;
+  width: 614px;
+}
+
+.inputLogin {
+  border: 1px solid rgb(225, 229, 235);
+  height: 45px;
+  margin-bottom: 22px;
+  padding: 0 15px;
+  width: 519px;
+}
+
+.btnPlay {
+  background: rgb(47, 193, 140);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  height: 45px;
+  width: 519px;
+}
+
+.btnPlay:disabled {
+  background: rgb(100, 221, 177);
+  cursor: not-allowed;
+}
+
+.btnSettings {
+  background-color: transparent;
+  background-image: url('../assets/imgs/trybeLogo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  color: transparent;
+  height: 45.35px;
+  margin-top: 30px;
+  width: 51.8px;
+}
+
+@media ( prefers-reduced-motion : no-preference ) {
+
+  .App-logo {
+    animation: shake infinite 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+}
+
+@keyframes shake {
+
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

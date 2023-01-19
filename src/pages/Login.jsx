@@ -53,46 +53,51 @@ class Login extends Component {
   render() {
     const { name, email, btnDisabled, isLoading } = this.state;
     return (
-      <div className="App-header">
+      <div className="loginContainer">
         { isLoading && <Loading />}
         <header>
           <img src={ logo } className="App-logo" alt="logo" />
-          <p>SUA VEZ</p>
         </header>
-        <label htmlFor="email">
-          Email:
-          <input
-            data-testid="input-gravatar-email"
-            type="email"
-            name="email"
-            id="email"
-            value={ email }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="name">
-          Nome:
-          <input
-            data-testid="input-player-name"
-            type="text"
-            name="name"
-            id="name"
-            value={ name }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <button
-          type="button"
-          disabled={ !btnDisabled }
-          data-testid="btn-play"
-          onClick={ this.handlePlayBtn }
-        >
-          Play
-        </button>
+        <body className="loginForm">
+          <label htmlFor="email">
+            <input
+              data-testid="input-gravatar-email"
+              type="email"
+              name="email"
+              id="email"
+              value={ email }
+              onChange={ this.handleChange }
+              placeholder="Qual é o seu e-mail do gravatar?"
+              className="inputLogin"
+            />
+          </label>
+          <label htmlFor="name">
+            <input
+              data-testid="input-player-name"
+              type="text"
+              name="name"
+              id="name"
+              value={ name }
+              onChange={ this.handleChange }
+              placeholder="Qual é o seu nome?"
+              className="inputLogin"
+            />
+          </label>
+          <button
+            type="button"
+            disabled={ !btnDisabled }
+            data-testid="btn-play"
+            onClick={ this.handlePlayBtn }
+            className="btnPlay"
+          >
+            Play
+          </button>
+        </body>
         <button
           type="button"
           data-testid="btn-settings"
           onClick={ this.handleSettingsBtn }
+          className="btnSettings"
         >
           Configurações
         </button>
