@@ -1,0 +1,137 @@
+.rankingContainer {
+  align-items: center;
+  background-image: url('../assets/imgs/bg4.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-flow: row wrap;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.rankingLogoTriviaContainer {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.rankingLogoTrivia {
+  height: 200.25px;
+  transform: translateY(120px);
+  width: 177.79px;
+  z-index: 999;
+}
+
+.rankingBox {
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-flow: column wrap;
+  height: 488px;
+  padding-top: 120px;
+  transform: translateY(-100px);
+  width: 489px;
+}
+
+.rankingText {
+  color: rgb(60, 27, 122);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.peopleRanking {
+  display: flex;
+  flex-flow: row wrap;
+  height: 200px;
+  margin-bottom: 20px;
+  overflow-y: scroll;
+  padding: 10px 0;
+  width: 410px;
+}
+
+.peopleRanking::-webkit-scrollbar {
+  display: none;
+}
+
+.rankingDiv {
+  align-items: center;
+  background: rgb(235, 235, 235);
+  border-radius: 100px;
+  display: flex;
+  flex-flow: row wrap;
+  height: 55px;
+  justify-content: flex-start;
+  margin-bottom: 13px;
+  padding-left: 10px;
+  position: relative;
+  width: 386px;
+}
+
+.userImgRanking {
+  border-radius: 100%;
+  height: 37px;
+  width: 37px;
+}
+
+.rankingName {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.rankingDivScore {
+  align-items: center;
+  background-color: white;
+  border-radius: 100px;
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 55px;
+  justify-content: flex-start;
+  padding-left: 10px;
+  position: absolute;
+  right: 0;
+  width: 184px;
+}
+
+.rankingScore {
+  margin-bottom: 15px;
+}
+
+.rankingStar {
+  transform: translateY(7px);
+}
+
+.rankingScoreNumber {
+  font-weight: 800;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.btnRankingPlayAgain {
+  background: rgb(47, 193, 140);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  height: 45px;
+  line-height: 150%;
+  text-transform: uppercase;
+  width: 386px;
+}

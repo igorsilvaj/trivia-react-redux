@@ -1,0 +1,36 @@
+.gameContainer {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100vh;
+  width: 100vw;
+}
+
+.gameHeaderContainer {
+  background: white;
+  display: flex;
+  flex-flow: row wrap;
+  height: 113px;
+  justify-content: flex-end;
+  width: 100%;
+  z-index: 98;
+}
+
+.headerDisplayInfos {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  width: 500px;
+}
+
+.gravatarUserImg {
+  border-radius: 100%;
+}
+
+.gameBodyContainer {
+  background-image: url('../assets/imgs/bg1.png');
+  display: flex;
+  flex-flow: row wrap;
+  height: 643px;
+  justify-content: center;
+  width: 100%;
+}

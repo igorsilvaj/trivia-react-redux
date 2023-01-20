@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateTimer } from '../redux/actions';
+import iconTimer from '../assets/imgs/iconTimer.png';
 
 function Timer({ time, dispatch }) {
   const thousand = 1000;
@@ -10,17 +11,18 @@ function Timer({ time, dispatch }) {
     const interval = setInterval(() => {
       const timer = time - 1;
       dispatch(updateTimer(timer));
-      console.log(timer);
     }, thousand);
     if (time === 0) clearInterval(interval);
     return () => clearInterval(interval);
   }, [time, dispatch]);
 
   return (
-    <div>
+    <div className="timer">
+      <img src={ iconTimer } alt="timer icon" className="timerIcon" />
       <span>
         {'Tempo Restante: '}
         { time }
+        {' s'}
       </span>
     </div>
   );

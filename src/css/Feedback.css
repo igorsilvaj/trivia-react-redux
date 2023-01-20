@@ -1,0 +1,145 @@
+.feedbackContainer {
+  align-items: center;
+  background-image: url('../assets/imgs/bg3.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.feedbackLogoTriviaContainer {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.feedbackLogoTrivia {
+  height: 153.79px;
+  margin: 20px 0;
+  width: 136.54px;
+}
+
+/* border: 4px solid rgb(47, 193, 140); */
+
+/* filter: drop-shadow(0 0 9px rgb(47, 193, 140)); */
+.feedbackUserImg {
+  border-radius: 104.412px;
+  box-sizing: border-box;
+  height: 213px;
+  width: 213px;
+  z-index: 99;
+}
+
+.goodJob {
+  border: 4px solid rgb(47, 193, 140);
+  filter: drop-shadow(0 0 9px rgb(47, 193, 140));
+}
+
+.couldBeBetter {
+  border: 4px solid rgb(234, 93, 93);
+  filter: drop-shadow(0 0 9px rgb(234, 93, 93));
+}
+
+.goodJobText {
+  color: rgb(47, 193, 140);
+  display: flex;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  height: 71px;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.couldBeBetterText {
+  color: rgb(234, 93, 93);
+  display: flex;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  height: 71px;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.feedbackMessage {
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-flow: column wrap;
+  height: 286px;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-bottom: 50px;
+  position: relative;
+  text-align: center;
+  transform: translateY(-85px);
+  width: 439px;
+  z-index: 2;
+}
+
+.feedbackBtnContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  transform: translateY(-80px);
+  width: 439px;
+  z-index: 2;
+}
+
+.grayText {
+  color: rgb(181, 181, 181);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.btnFeedbackRanking {
+  background: rgb(0, 213, 226);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  height: 45px;
+  line-height: 150%;
+  text-transform: uppercase;
+  width: 212.5px;
+}
+
+.btnFeedbackPlayAgain {
+  background: rgb(47, 193, 140);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  height: 45px;
+  line-height: 150%;
+  text-transform: uppercase;
+  width: 212.5px;
+}
+
+.feedbackFooter {
+  background: rgb(60, 27, 122);
+  bottom: 0;
+  height: 480px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}

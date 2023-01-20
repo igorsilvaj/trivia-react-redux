@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import logo from '../trivia.png';
+import logo from '../assets/imgs/logoTrivia.png';
 import { requestTokenTrivia } from '../helpers/fetch';
 import { login, requestQuestions, resetTimer } from '../redux/actions';
 import { Loading } from '../components/Loading';
@@ -58,31 +58,27 @@ class Login extends Component {
         <header>
           <img src={ logo } className="App-logo" alt="logo" />
         </header>
-        <body className="loginForm">
-          <label htmlFor="email">
-            <input
-              data-testid="input-gravatar-email"
-              type="email"
-              name="email"
-              id="email"
-              value={ email }
-              onChange={ this.handleChange }
-              placeholder="Qual é o seu e-mail do gravatar?"
-              className="inputLogin"
-            />
-          </label>
-          <label htmlFor="name">
-            <input
-              data-testid="input-player-name"
-              type="text"
-              name="name"
-              id="name"
-              value={ name }
-              onChange={ this.handleChange }
-              placeholder="Qual é o seu nome?"
-              className="inputLogin"
-            />
-          </label>
+        <div className="loginForm">
+          <input
+            data-testid="input-gravatar-email"
+            type="email"
+            name="email"
+            id="email"
+            value={ email }
+            onChange={ this.handleChange }
+            placeholder="Qual é o seu e-mail do gravatar?"
+            className="inputLogin"
+          />
+          <input
+            data-testid="input-player-name"
+            type="text"
+            name="name"
+            id="name"
+            value={ name }
+            onChange={ this.handleChange }
+            placeholder="Qual é o seu nome?"
+            className="inputLogin"
+          />
           <button
             type="button"
             disabled={ !btnDisabled }
@@ -90,9 +86,9 @@ class Login extends Component {
             onClick={ this.handlePlayBtn }
             className="btnPlay"
           >
-            Play
+            JOGAR
           </button>
-        </body>
+        </div>
         <button
           type="button"
           data-testid="btn-settings"

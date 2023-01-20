@@ -1,33 +1,229 @@
+.gameHeaderContainer {
+  background: white;
+  display: flex;
+  flex-flow: row wrap;
+  height: 10vh;
+  justify-content: flex-end;
+  min-height: 113px;
+  width: 100%;
+}
+
+.headerDisplayInfos {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: 50px;
+}
+
+.userImgAndName {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: 60px;
+}
+
+.gravatarUserImg {
+  border-radius: 100%;
+  height: 37px;
+  width: 37px;
+}
+
+.userName {
+  margin-left: 10px;
+}
+
+.score {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: 60px;
+}
+
+.star {
+  margin-top: -8px;
+}
+
+
+.scoreText {
+  margin-left: 10px;
+}
+
+.scoreNumber {
+  font-weight: 800;
+  margin-left: 5px;
+}
+
+.gameBodyContainer {
+  background-color: blue;
+  display: flex;
+  flex-flow: row wrap;
+  height: 435px;
+  justify-content: center;
+}
+
+.gameLogoTrivia {
+  height: 222px;
+  position: absolute;
+  top: -235px;
+  width: 210px;
+  z-index: 99;
+}
+
 .questionContainer {
   align-items: center;
   display: flex;
+  flex-flow: row wrap;
+}
+
+.question {
+  align-items: center;
+  display: flex;
   flex-flow: column wrap;
+  transform: translateY(130px);
+}
+
+.questionCategoryBox {
+  align-items: center;
+  background: rgb(0, 213, 226);
+  border-radius: 100px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
+  display: flex;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  height: 45px;
+  justify-content: center;
+  letter-spacing: 0.12em;
+  line-height: 150%;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translateY(20px);
+  width: 413px;
+  z-index: 99;
+}
+
+.questionBox {
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-flow: row wrap;
+  height: 286px;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  width: 439px;
+}
+
+.questionText {
+  color: black;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.timerIcon {
+  margin-bottom: 4px;
+  margin-right: 10px;
+}
+
+.timer {
+  align-items: center;
+  color: rgb(234, 93, 93);
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Verdana , sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  height: 38px;
+  justify-content: center;
+  letter-spacing: 0.12em;
+  line-height: 150%;
+  transform: translateY(-43px);
+  width: 413px;
+  z-index: 99;
+}
+
+.answer {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  height: 381px;
+  justify-content: flex-end;
+  transform: translateY(25px);
 }
 
 .answerContainer {
   align-items: center;
   display: flex;
   flex-flow: column wrap;
-  height: 150px;
-  justify-content: space-around;
-  padding: 10px;
-  width: 200px;
+  justify-content: flex-end;
+  margin: 0;
+  transform: translateY(30px);
+  width: 550px;
+}
+
+.btnAnswer {
+  background-color: white;
+  border-radius: 50px;
+  color: black;
+  cursor: pointer;
+  height: 64px;
+  margin-bottom: 15px;
+  width: 519px;
 }
 
 .incorrect {
-  background-color: rgb(70, 9, 9);
-  border: 3px solid red;
-  border-radius: 50px;
-  color: white;
-  cursor: pointer;
+  border: 1px solid red;
+  filter: drop-shadow(0 0 22px rgb(184, 59, 59));
   pointer-events: none;
 }
 
+.incorrect:focus {
+  background-color: red;
+}
+
 .correct {
-  background-color: rgb(6, 63, 8);
-  border: 3px solid rgb(6, 240, 15);
-  border-radius: 50px;
+  border: 1px solid rgb(6, 240, 15);
+  filter: drop-shadow(0 -1px 16px rgb(47, 193, 140));
+  pointer-events: none;
+}
+
+.correct:focus {
+  background-color: rgb(6, 240, 15);
+}
+
+.btnNextQuestion {
+  background: rgb(47, 193, 140);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   color: white;
   cursor: pointer;
-  pointer-events: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  height: 45px;
+  line-height: 150%;
+  text-transform: uppercase;
+  transform: translateY(65px);
+  width: 519px;
+  z-index: 99;
+}
+
+.gameLogoTrybe {
+  height: 42.26px;
+  width: 37px;
+  z-index: 99;
+}
+
+.gameFooter {
+  background: rgb(60, 27, 122);
+  height: 10vh;
+  min-height: 383px;
+  width: 100%;
 }
