@@ -12,7 +12,7 @@
   align-items: center;
   display: flex;
   flex-flow: row wrap;
-  margin-right: 50px;
+  margin-right: 400px;
 }
 
 .userImgAndName {
@@ -54,7 +54,10 @@
 }
 
 .gameBodyContainer {
-  background-color: blue;
+  background-image: url('../assets/imgs/bg2.png');
+  background-position: center -70px;
+  background-repeat: repeat-x;
+  background-size: 80%;
   display: flex;
   flex-flow: row wrap;
   height: 435px;
@@ -73,6 +76,8 @@
   align-items: center;
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
+  width: 1300px;
 }
 
 .question {
@@ -154,7 +159,6 @@
   flex-flow: column wrap;
   height: 381px;
   justify-content: flex-end;
-  transform: translateY(25px);
 }
 
 .answerContainer {
@@ -183,18 +187,45 @@
   pointer-events: none;
 }
 
-.incorrect:focus {
-  background-color: red;
-}
-
 .correct {
   border: 1px solid rgb(6, 240, 15);
   filter: drop-shadow(0 -1px 16px rgb(47, 193, 140));
   pointer-events: none;
 }
 
-.correct:focus {
-  background-color: rgb(6, 240, 15);
+.correct.selected {
+  background-color: rgb(21, 184, 26);
+  color: white;
+  font-weight: 900;
+}
+
+.incorrect.selected {
+  background-color: rgb(206, 14, 14);
+  color: white;
+  font-weight: 900;
+}
+
+.showAnswer {
+  border-radius: 50%;
+  height: 46px;
+  left: 10px;
+  position: absolute;
+  top: 8px;
+  width: 46px;
+}
+
+.answercorrect {
+  background-color: rgb(47, 193, 140);
+  background-image: url('../assets/imgs/check.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.answerincorrect {
+  background-color: rgb(234, 93, 93);
+  background-image: url('../assets/imgs/x_letter.png');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .btnNextQuestion {
@@ -208,9 +239,11 @@
   font-style: normal;
   font-weight: 700;
   height: 45px;
+  left: 965px;
   line-height: 150%;
+  position: absolute;
   text-transform: uppercase;
-  transform: translateY(65px);
+  top: 568px;
   width: 519px;
   z-index: 99;
 }
@@ -224,6 +257,6 @@
 .gameFooter {
   background: rgb(60, 27, 122);
   height: 10vh;
-  min-height: 383px;
+  min-height: 459px;
   width: 100%;
 }

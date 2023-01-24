@@ -15,11 +15,19 @@ function GameQuestions(props) {
   const [correct, setCorrect] = useState('');
   const [incorrect, setIncorrect] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
+  const [btnClick, setBtnClick] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+  });
+
   const history = useHistory();
 
-  const changeClass = () => {
+  const changeClass = (target) => {
     setCorrect('correct');
     setIncorrect('incorrect');
+    if (target) target.classList.add('selected');
   };
 
   useEffect(() => {
@@ -42,14 +50,16 @@ function GameQuestions(props) {
   };
 
   const handleClick = ({ target }) => {
-    if (target.name === 'correct') dispatch(updateScore(calcScore()));
+    if (!target.name.includes('incorrect')) dispatch(updateScore(calcScore()));
     dispatch(stopTimer(timer));
-    changeClass();
+    changeClass(target);
+    const position = target.name.split('-')[1];
+    // console.log(btnClick[position]);
+    setBtnClick({ ...btnClick, [position]: true });
     dispatch(nextButton(false));
   };
 
   const nextQuestionBtnClick = () => {
-    console.log(name);
     if (currentQuestion === questions.length - 1) {
       const ranking = JSON.parse(localStorage.getItem('ranking'));
       if (!ranking) {
@@ -70,6 +80,12 @@ function GameQuestions(props) {
       dispatch(resetTimer());
       dispatch(nextQuestion());
     }
+    setBtnClick({
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+    });
   };
 
   return (
@@ -97,7 +113,7 @@ function GameQuestions(props) {
           {answers[currentQuestion].map((e, index) => (
             <button
               type="button"
-              name={ e.type }
+              name={ `${e.type}-${index}` }
               disabled={ isDisabled }
               data-testid={
                 e.type === 'incorrect'
@@ -106,27 +122,36 @@ function GameQuestions(props) {
               }
               key={ `${index}-question` }
               onClick={ handleClick }
-              className={
-                `btnAnswer ${e.type === 'incorrect'
-                  ? incorrect
-                  : correct}`
-              }
+              className={ `btnAnswer ${e.type === 'incorrect'
+                ? incorrect
+                : correct} ${
+                btnClick[index]
+                  ? 'selected'
+                  : ''
+              }` }
             >
               {e.text}
+              <div
+                className={
+                  `showAnswer answer${e.type === 'incorrect'
+                    ? incorrect
+                    : correct}`
+                }
+              />
             </button>
           ))}
         </div>
-        {!nextBtn && (
-          <button
-            data-testid="btn-next"
-            type="button"
-            onClick={ () => nextQuestionBtnClick() }
-            className="btnNextQuestion"
-          >
-            Próxima
-          </button>
-        )}
       </div>
+      {!nextBtn && (
+        <button
+          data-testid="btn-next"
+          type="button"
+          onClick={ () => nextQuestionBtnClick() }
+          className="btnNextQuestion"
+        >
+          Próxima
+        </button>
+      )}
     </div>
   );
 }

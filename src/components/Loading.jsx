@@ -4,7 +4,9 @@ export class Loading extends Component {
   render() {
     return (
       <div className="loadingContainer">
-        <div className="loadingElement">Loading...</div>
+        <div className="loadingElement">
+          <div className="loader" />
+        </div>
       </div>
     );
   }

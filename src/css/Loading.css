@@ -14,3 +14,30 @@
 .loadingElement {
   color: red;
 }
+
+.loader {
+  animation: spin 1s infinite;
+  border: 6px solid rgba(128, 128, 128, 0.5);
+  border-radius: 50%;
+  border-top-color: rgb(0, 213, 226);
+  height: 100px;
+  width: 100px;
+}
+
+@keyframes spin {
+
+  0% {
+    border-top-color: rgb(47, 193, 140);
+    transform: rotate(1turn);
+  }
+
+  50% {
+    border-top-color: rgb(224, 89, 93);
+    transform: rotate(2turn);
+  }
+
+  100% {
+    border-top-color: rgb(248, 185, 23);
+    transform: rotate(3turn);
+  }
+}
