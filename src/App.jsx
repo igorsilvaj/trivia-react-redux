@@ -11,7 +11,7 @@ export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/" basename="/trivia-react-redux" component={ Login } />
         <Route path="/settings" component={ Settings } />
         <Route path="/game" component={ Game } />
         <Route path="/feedback" component={ Feedback } />
