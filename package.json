@@ -1,5 +1,6 @@
 {
   "name": "trivia-react-redux",
+  "homepage": "https://igorsilvaj.github.io/trivia-react-redux/",
   "version": "0.1.0",
   "private": true,
   "engines": {
