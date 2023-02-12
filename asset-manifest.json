@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.b18a94e8.css",
-    "main.js": "/static/js/main.a099d873.js",
-    "static/media/bg4.png": "/static/media/bg4.e6427081c23f8db27ea1.png",
-    "static/media/bg1.png": "/static/media/bg1.f1cfe8db326cac8867ad.png",
-    "static/media/bg3.png": "/static/media/bg3.fc9c24e8efd70090b132.png",
-    "static/media/bg2.png": "/static/media/bg2.07600d3f927db8f1ba94.png",
-    "static/media/logoTrivia.png": "/static/media/logoTrivia.ad99e9cd28a9242b1ac3.png",
-    "index.html": "/index.html",
-    "main.b18a94e8.css.map": "/static/css/main.b18a94e8.css.map",
-    "main.a099d873.js.map": "/static/js/main.a099d873.js.map"
+    "main.css": "/trivia-react-redux/static/css/main.27ed1aa3.css",
+    "main.js": "/trivia-react-redux/static/js/main.1b2880b9.js",
+    "static/media/bg4.png": "/trivia-react-redux/static/media/bg4.e6427081c23f8db27ea1.png",
+    "static/media/bg1.png": "/trivia-react-redux/static/media/bg1.f1cfe8db326cac8867ad.png",
+    "static/media/bg3.png": "/trivia-react-redux/static/media/bg3.fc9c24e8efd70090b132.png",
+    "static/media/bg2.png": "/trivia-react-redux/static/media/bg2.07600d3f927db8f1ba94.png",
+    "static/media/logoTrivia.png": "/trivia-react-redux/static/media/logoTrivia.ad99e9cd28a9242b1ac3.png",
+    "index.html": "/trivia-react-redux/index.html",
+    "main.27ed1aa3.css.map": "/trivia-react-redux/static/css/main.27ed1aa3.css.map",
+    "main.1b2880b9.js.map": "/trivia-react-redux/static/js/main.1b2880b9.js.map"
   },
   "entrypoints": [
-    "static/css/main.b18a94e8.css",
-    "static/js/main.a099d873.js"
+    "static/css/main.27ed1aa3.css",
+    "static/js/main.1b2880b9.js"
   ]
 }
